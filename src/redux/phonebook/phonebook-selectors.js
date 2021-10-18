@@ -1,11 +1,13 @@
-export const getFilter = (state) => state.contacts.filter;
+export const getFilter = (state) => state.filterReducer;
 
-export const getItems = (state) => state.contacts.items;
+// export const getItems = (state) => {
+//   return state.items;
+// };
 
-export const getFilteredItems = (state) => {
-  const items = getItems(state);
-  const filter = getFilter(state);
-  return items.filter((item) =>
-    item.name.toLowerCase().includes(filter.toLowerCase())
-  );
-};
+// export const getFilteredItems = (state) => {
+//   const items = getItems(state);
+//   const filter = getFilter(state);
+//   return items.filter((item) =>
+//     item.name.toLowerCase().includes(filter.toLowerCase())
+//   );
+// };

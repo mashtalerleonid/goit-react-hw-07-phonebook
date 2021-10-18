@@ -1,24 +1,34 @@
 {
   "contacts": [
     {
-      "id": "f036cc4f-430b-4cc6-849d-bb5ef96cf0bb",
-      "name": "Jim",
-      "number": "454 545 545"
+      "name": "Bob",
+      "number": "23453245",
+      "id": "GJxHTqK"
     },
     {
-      "id": "900e559a-0faa-4f68-998c-4e4aab5868dd",
       "name": "Tommy",
-      "number": "235 65 78"
+      "number": "456 12 78",
+      "id": "tollCep"
     },
     {
-      "id": "ec62a57a-fa9c-40aa-8cb5-05157c826146",
       "name": "Kate",
-      "number": "259 98 87"
+      "number": "147 25 89",
+      "id": "fiGuBor"
     },
     {
-      "id": "58bb54b5-0118-4dbc-8f07-4dffbe0e042c",
-      "name": "Leo",
-      "number": "254 45 56"
+      "name": "Jim",
+      "number": "321 45 78",
+      "id": "s3-y5_9"
+    },
+    {
+      "name": "Liza",
+      "number": "458 87 79",
+      "id": "f20vYj2"
+    },
+    {
+      "name": "Dan",
+      "number": "357 78 89",
+      "id": "CacWp43"
     }
   ]
 }

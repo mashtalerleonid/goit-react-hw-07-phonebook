@@ -1,9 +1,6 @@
-import { v4 as uuidv4 } from "uuid";
 import { createAction } from "@reduxjs/toolkit";
 
 export const filterChange = createAction("phonebook/filterChange");
-
-export const filterBlur = createAction("phonebook/filterBlur");
 
 // export const deleteContact = createAction("phonebook/deleteContact");
 
@@ -13,16 +10,6 @@ export const filterBlur = createAction("phonebook/filterBlur");
 //   //   payload: { id: uuidv4(), name, number },
 //   // })
 // );
-
-// export const fetchContactsRequest = createAction(
-//   "phonebook/fetchContactsRequest"
-// );
-
-// export const fetchContactsSuccess = createAction(
-//   "phonebook/fetchContactsSuccess"
-// );
-
-// export const fetchContactsError = createAction("phonebook/fetchContactsError");
 
 // ---------------------- без toolkit
 

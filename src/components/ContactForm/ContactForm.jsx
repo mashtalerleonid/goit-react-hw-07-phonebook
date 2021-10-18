@@ -1,20 +1,20 @@
-import { v4 as uuidv4 } from "uuid";
 import React from "react";
 import { Form, Label } from "./ContactForm.styled";
-
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  phonebookOperations,
-  phonebookActions,
-  phonebookSelectors,
-} from "redux/phonebook";
+import { useSelector } from "react-redux";
+
+import { useAddContactMutation } from "service/phonebook-api";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
-  const dispatch = useDispatch();
-  const items = useSelector(phonebookSelectors.getFilteredItems);
+  const [addContact] = useAddContactMutation();
+
+  const items = useSelector((state) =>
+    state.phonebook.queries["getAllContacts(undefined)"]
+      ? state.phonebook.queries["getAllContacts(undefined)"].data
+      : []
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,23 +37,26 @@ export default function ContactForm() {
     setNumber("");
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
     let isAdded = false;
-    const contact = { id: uuidv4(), name, number };
-    items.forEach((item) => {
-      if (item.name === name) {
-        isAdded = true;
-        return;
-      }
-    });
+    const contact = { name, number };
+
+    if (items) {
+      items.forEach((item) => {
+        if (item.name === name) {
+          isAdded = true;
+          return;
+        }
+      });
+    }
 
     if (isAdded) {
       alert(`${name} is already in contacts`);
     } else {
-      await dispatch(phonebookOperations.addContact(contact));
-      await dispatch(phonebookOperations.fetchContacts(contact));
+      // await dispatch(phonebookOperations.addContact(contact));
+      // await dispatch(phonebookOperations.fetchContacts(contact));
+      addContact(contact);
       reset();
     }
   };
@@ -92,3 +95,9 @@ export default function ContactForm() {
     </Form>
   );
 }
+
+// import {
+//   phonebookOperations,
+//   phonebookActions,
+//   phonebookSelectors,
+// } from "redux/phonebook";

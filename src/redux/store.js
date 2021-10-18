@@ -1,13 +1,26 @@
-// import { combineReducers } from "redux";
-// import { composeWithDevTools } from "redux-devtools-extension";
-import { configureStore, applyMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
-import phonebookReducer from "./phonebook/phonebook-reducer";
+import { filterReducer } from "./phonebook/phonebook-reducer";
+import { phonebookApi } from "service/phonebook-api";
 
 const middlewares = [];
 if (process.env.NODE_ENV === `development`) {
   middlewares.push(logger);
 }
+
+export const store = configureStore({
+  reducer: {
+    [phonebookApi.reducerPath]: phonebookApi.reducer,
+    filterReducer,
+  },
+  middleware: (getDefaultMiddleware) => [
+    ...getDefaultMiddleware(),
+    phonebookApi.middleware,
+  ],
+});
+
+// ---------For Local storage----------
+
 // import {
 //   persistStore,
 //   persistReducer,
@@ -36,14 +49,14 @@ if (process.env.NODE_ENV === `development`) {
 
 // const store = createStore(rootReducer, composeWithDevTools());
 
-export const store = configureStore({
-  reducer: {
-    contacts: phonebookReducer,
-  },
-  middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat(middlewares);
-  },
-  devTools: process.env.NODE_ENV === "development",
-});
+// export const store = configureStore({
+//   reducer: {
+//     contacts: phonebookReducer,
+//   },
+//   middleware: (getDefaultMiddleware) => {
+//     return getDefaultMiddleware().concat(middlewares);
+//   },
+//   devTools: process.env.NODE_ENV === "development",
+// });
 
 // export default { store, persistor };

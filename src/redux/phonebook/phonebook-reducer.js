@@ -1,61 +1,8 @@
-import { createReducer, combineReducers, createSlice } from "@reduxjs/toolkit";
+import { createReducer } from "@reduxjs/toolkit";
 import * as actions from "../phonebook/phonebook-actions";
-import { fetchContacts } from "./phonebook-operations";
 
-// const phonebookSlice = createSlice({
-//   name: "contacts",
-//   initialState: {
-//     items: [],
-//     filter: "",
-//     isLoading: false,
-//     error: null,
-//   },
-// });
-
-const itemsReducer = createReducer([], {
-  // [actions.addContact]: (state, action) => {
-  //   // let isAdded = false;
-  //   // state.forEach((item) => {
-  //   //   if (item.name === action.payload.name) {
-  //   //     isAdded = true;
-  //   //     return;
-  //   //   }
-  //   // });
-  //   // if (isAdded) {
-  //   //   alert(`${action.payload.name} is already in contacts`);
-  //   //   return state;
-  //   // }
-  //   return [...state, action.payload];
-  // },
-
-  // [actions.deleteContact]: (state, action) =>
-  //   state.filter((item) => item.id !== action.payload),
-
-  [fetchContacts.fulfilled]: (_, action) => action.payload,
-});
-
-const filterReducer = createReducer("", {
+export const filterReducer = createReducer("", {
   [actions.filterChange]: (_, action) => action.payload,
-
-  [actions.filterBlur]: (_, action) => action.payload,
-});
-
-const isLoadingReducer = createReducer(false, {
-  [fetchContacts.pending]: () => true,
-  [fetchContacts.fulfilled]: () => false,
-  [fetchContacts.rejected]: () => false,
-});
-
-const errorReducer = createReducer(null, {
-  [fetchContacts.rejected]: (_, action) => action.payload,
-  [fetchContacts.pending]: () => null,
-});
-
-export default combineReducers({
-  items: itemsReducer,
-  filter: filterReducer,
-  isLoading: isLoadingReducer,
-  error: errorReducer,
 });
 
 // ------------------------ без toolkit
@@ -99,3 +46,45 @@ export default combineReducers({
 //       return state;
 //   }
 // };
+
+// ---------------------------------
+
+// const itemsReducer = createReducer([], {
+//   [actions.addContact]: (state, action) => {
+//     let isAdded = false;
+//     state.forEach((item) => {
+//       if (item.name === action.payload.name) {
+//         isAdded = true;
+//         return;
+//       }
+//     });
+//     if (isAdded) {
+//       alert(`${action.payload.name} is already in contacts`);
+//       return state;
+//     }
+//     return [...state, action.payload];
+//   },
+//
+//   [actions.deleteContact]: (state, action) =>
+//     state.filter((item) => item.id !== action.payload),
+//
+//   [fetchContacts.fulfilled]: (_, action) => action.payload,
+// });
+
+// const isLoadingReducer = createReducer(false, {
+//   [fetchContacts.pending]: () => true,
+//   [fetchContacts.fulfilled]: () => false,
+//   [fetchContacts.rejected]: () => false,
+// });
+
+// const errorReducer = createReducer(null, {
+//   [fetchContacts.rejected]: (_, action) => action.payload,
+//   [fetchContacts.pending]: () => null,
+// });
+
+// export default combineReducers({
+//   items: itemsReducer,
+//   filter: filterReducer,
+//   isLoading: isLoadingReducer,
+//   error: errorReducer,
+// });
