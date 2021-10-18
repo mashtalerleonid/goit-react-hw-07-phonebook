@@ -40,8 +40,9 @@ export const store = configureStore({
   reducer: {
     contacts: phonebookReducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(middlewares),
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware().concat(middlewares);
+  },
   devTools: process.env.NODE_ENV === "development",
 });
 

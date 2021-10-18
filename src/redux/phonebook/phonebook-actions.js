@@ -5,14 +5,24 @@ export const filterChange = createAction("phonebook/filterChange");
 
 export const filterBlur = createAction("phonebook/filterBlur");
 
-export const deleteContact = createAction("phonebook/deleteContact");
+// export const deleteContact = createAction("phonebook/deleteContact");
 
-export const addContact = createAction(
-  "phonebook/addContact",
-  ({ name, number }) => ({
-    payload: { id: uuidv4(), name, number },
-  })
-);
+// export const addContact = createAction(
+//   "phonebook/addContact"
+//   // ({ name, number }) => ({
+//   //   payload: { id: uuidv4(), name, number },
+//   // })
+// );
+
+// export const fetchContactsRequest = createAction(
+//   "phonebook/fetchContactsRequest"
+// );
+
+// export const fetchContactsSuccess = createAction(
+//   "phonebook/fetchContactsSuccess"
+// );
+
+// export const fetchContactsError = createAction("phonebook/fetchContactsError");
 
 // ---------------------- без toolkit
 
